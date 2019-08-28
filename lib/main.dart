@@ -9,7 +9,7 @@ class GHFlutterApp extends StatelessWidget {
       title: 'GHFlutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('GHFlutter'),
+          title: Text('GHFlutter App'),
         ),
         body: Center(
           child: Text('GHFlutter'),
