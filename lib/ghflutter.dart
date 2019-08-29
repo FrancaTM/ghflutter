@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'strings.dart';
 import 'member.dart';
+import 'member_widget.dart';
 
 class GHFlutter extends StatefulWidget {
   @override
@@ -43,6 +44,18 @@ class GHFlutterState extends State<GHFlutter> {
             _members[i].avatarUrl,
           ),
         ),
+        onTap: () {
+          _pushMember(_members[i]);
+        },
+      ),
+    );
+  }
+
+  _pushMember(Member member) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MemberWidget(member),
       ),
     );
   }
