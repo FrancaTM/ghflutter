@@ -25,7 +25,21 @@ class _MemberWidgetState extends State<MemberWidget> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Image.network(widget.member.avatarUrl),
+        child: Column(
+          children: <Widget>[
+            Image.network(widget.member.avatarUrl),
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.green,
+                size: 48,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
