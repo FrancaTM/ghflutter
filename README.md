@@ -1,16 +1,10 @@
-# ghflutter
+# RayWenderlich sample - ghflutter
 
-A new Flutter project.
+A simple getting started Flutter app 
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+![GHFlutter](https://user-images.githubusercontent.com/14852938/63968358-e85e7680-ca75-11e9-921c-d30afc08a306.gif)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is based on:
+- [Getting Started with Flutter](https://www.raywenderlich.com/4529993-getting-started-with-flutter)
