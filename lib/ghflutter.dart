@@ -51,11 +51,31 @@ class GHFlutterState extends State<GHFlutter> {
     );
   }
 
+  // _pushMember(Member member) {
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => MemberWidget(member),
+  //     ),
+  //   );
+  // }
+
   _pushMember(Member member) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => MemberWidget(member),
+      PageRouteBuilder(
+        opaque: true,
+        transitionDuration: const Duration(milliseconds: 1000),
+        pageBuilder: (context, _, __) => MemberWidget(member),
+        transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+          return FadeTransition(
+            opacity: animation,
+            child: RotationTransition(
+              turns: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+              child: child,
+            ),
+          );
+        },
       ),
     );
   }
