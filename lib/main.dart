@@ -34,6 +34,15 @@ class GHFlutterState extends State<GHFlutter> {
     });
   }
 
+  Widget _buildRow(int i) {
+    return ListTile(
+      title: Text(
+        '${_members[i]['login']}',
+        style: _biggerFont,
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -47,7 +56,13 @@ class GHFlutterState extends State<GHFlutter> {
       appBar: AppBar(
         title: Text(Strings.appTitle),
       ),
-      body: Text(Strings.appTitle),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: _members.length,
+        itemBuilder: (BuildContext context, int position) {
+          return _buildRow(position);
+        },
+      ),
     );
   }
 }
