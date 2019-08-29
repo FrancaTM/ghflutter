@@ -22,15 +22,20 @@ class GHFlutter extends StatefulWidget {
 }
 
 class GHFlutterState extends State<GHFlutter> {
-  var _members = [];
+  var _members = <Member>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   _loadData() async {
     String dataUrl = 'https://api.github.com/orgs/raywenderlich/members';
     http.Response response = await http.get(dataUrl);
-    print(response.body);
+    // print(response.body);
     setState(() {
-      _members = json.decode(response.body);
+      final membersJson = json.decode(response.body);
+
+      for (var memberJson in membersJson) {
+        final member = Member(memberJson['login']);
+        _members.add(member);
+      }
     });
   }
 
@@ -39,7 +44,7 @@ class GHFlutterState extends State<GHFlutter> {
       padding: const EdgeInsets.all(16.0),
       child: ListTile(
         title: Text(
-          '${_members[i]['login']}',
+          '${_members[i].login}',
           style: _biggerFont,
         ),
       ),
@@ -71,5 +76,16 @@ class GHFlutterState extends State<GHFlutter> {
         },
       ),
     );
+  }
+}
+
+class Member {
+  final String login;
+
+  Member(this.login) {
+    if (login == null) {
+      throw ArgumentError("login of Member cannot be null. "
+          "Received: '$login'");
+    }
   }
 }
