@@ -33,7 +33,7 @@ class GHFlutterState extends State<GHFlutter> {
       final membersJson = json.decode(response.body);
 
       for (var memberJson in membersJson) {
-        final member = Member(memberJson['login']);
+        final member = Member(memberJson['login'], memberJson['avatar_url']);
         _members.add(member);
       }
     });
@@ -46,6 +46,13 @@ class GHFlutterState extends State<GHFlutter> {
         title: Text(
           '${_members[i].login}',
           style: _biggerFont,
+        ),
+        leading: CircleAvatar(
+          radius: 25,
+          backgroundColor: Colors.green,
+          backgroundImage: NetworkImage(
+            _members[i].avatarUrl,
+          ),
         ),
       ),
     );
@@ -81,11 +88,16 @@ class GHFlutterState extends State<GHFlutter> {
 
 class Member {
   final String login;
+  final String avatarUrl;
 
-  Member(this.login) {
+  Member(this.login, this.avatarUrl) {
     if (login == null) {
       throw ArgumentError("login of Member cannot be null. "
           "Received: '$login'");
+    }
+    if (avatarUrl == null) {
+      throw ArgumentError("avatarUrl of Member cannot be null. "
+          "Received: '$avatarUrl'");
     }
   }
 }
