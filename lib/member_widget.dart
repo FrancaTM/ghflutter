@@ -17,6 +17,54 @@ class MemberWidget extends StatefulWidget {
 }
 
 class _MemberWidgetState extends State<MemberWidget> {
+  _showOKScreen(BuildContext context) async {
+    bool value = await Navigator.push(
+      context,
+      MaterialPageRoute<bool>(
+        builder: (BuildContext context) {
+          return Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              children: <Widget>[
+                GestureDetector(
+                  child: Text('OK'),
+                  onTap: () {
+                    Navigator.pop(context, true);
+                  },
+                ),
+                GestureDetector(
+                  child: Text('NOT OK'),
+                  onTap: () {
+                    Navigator.pop(context, false);
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+
+    var alert = AlertDialog(
+      content: Text((value != null && value)
+          ? 'OK was pressed'
+          : 'NOT OK or BACK was pressed'),
+      actions: <Widget>[
+        FlatButton(
+          child: Text('OK'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    );
+
+    showDialog(
+      context: context,
+      child: alert,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +84,12 @@ class _MemberWidgetState extends State<MemberWidget> {
               ),
               onPressed: () {
                 Navigator.pop(context);
+              },
+            ),
+            RaisedButton(
+              child: Text('Press me'),
+              onPressed: () {
+                _showOKScreen(context);
               },
             ),
           ],
