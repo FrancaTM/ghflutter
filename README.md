@@ -8,3 +8,4 @@ A simple getting started Flutter app
 
 This project is based on:
 - [Getting Started with Flutter](https://www.raywenderlich.com/4529993-getting-started-with-flutter)
+- [Flutter Navigation: Getting Started](https://www.raywenderlich.com/4562634-flutter-navigation-getting-started)
